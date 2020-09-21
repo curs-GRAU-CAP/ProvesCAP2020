@@ -21,9 +21,10 @@ Pila class >> creaPila [
 	[ pila := OrderedCollection new. index := 0. pila ] .       "crea la pila"
 	[ index > 0 ifTrue: [ index := index - 1. pila removeLast ] "pop"
 					ifFalse: [ Pila error: 'Pila Buida' ] ] . 
+	[ index > 0 ifTrue: [ pila last ]                           "top"
+					ifFalse: [ Pila error: 'Pila Buida' ] ] . 
 	[ :elem | index := index + 1. pila add: elem. ] .           "push"
 	[ index ] .                                                 "nombre d'elements de la pila"
-	[ index = 0 ] .                                             "pila buida?"
-	[ pila ]                                                    "retorna la OrderedCollection 'pila' capturada"
+	[ index = 0 ]                                               "pila buida?"
 	 }
 ]
