@@ -27,11 +27,10 @@ BlockWithExit class >> example [
 	"BlockWithExit example"
 
 	| theLoop coll |
-	"Transcript open."
 	coll := OrderedCollection new.
 	1000 timesRepeat: [ coll add: 1000 atRandom ].
-	theLoop := [coll do: [:each | Transcript show: each asString; cr.
-							  (each < 100) ifTrue: [theLoop exit]]] withExit.
+	theLoop := [coll do: [:each | each traceCr.
+							  			  (each < 100) ifTrue: [theLoop exit]]] withExit.
 	theLoop value.
 
 ]
