@@ -35,6 +35,19 @@ BlockWithExit class >> example [
 
 ]
 
+{ #category : #testing }
+BlockWithExit class >> example2 [
+	"BlockWithExit example2"
+
+	| coll |
+	coll := OrderedCollection new.
+	1000 timesRepeat: [ coll add: 1000 atRandom ].
+	([coll do: [:each | each traceCr.
+							  			  (each < 100) ifTrue: [thisContext sender sender sender receiver exit]]] withExit) value.
+
+
+]
+
 { #category : #'instance creation' }
 BlockWithExit class >> with: aBlock [
 	^ self new with: aBlock 
