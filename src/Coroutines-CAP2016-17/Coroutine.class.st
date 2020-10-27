@@ -53,8 +53,8 @@ Coroutine >> initialize [
 	firstTime := true.
 	savedContinuation := nil.
 	resumer := [ :nextCoroutine :value | 
-						Continuation callcc: [ :cc | 	savedContinuation := cc.
-													      nextCoroutine value: value  ]  ].
+                   Continuation callcc: [ :cc | savedContinuation := cc.
+                                                nextCoroutine value: value  ]  ].
 
 ]
 
@@ -67,8 +67,8 @@ Coroutine >> makeCoroutineWith: aBlock [
 { #category : #evaluation }
 Coroutine >> value: aValue [
 
-	firstTime 	ifTrue: [ firstTime := false.
-						 theBlock value: resumer value: aValue ]
-		 	   	ifFalse: [ savedContinuation value: aValue  ]
+	firstTime ifTrue:  [ firstTime := false.
+		                  theBlock value: resumer value: aValue ]
+		 	   	 ifFalse: [ savedContinuation value: aValue  ]
 			
 ]
