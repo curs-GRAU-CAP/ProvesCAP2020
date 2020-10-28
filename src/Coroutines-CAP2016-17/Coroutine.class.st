@@ -7,7 +7,6 @@ After Section 17.6 ""Coroutines: Continuations in Action"" (p.567) of the book "
 Class {
 	#name : #Coroutine,
 	#superclass : #Object,
-	#type : #variable,
 	#instVars : [
 		'savedContinuation',
 		'firstTime',
@@ -49,7 +48,7 @@ Coroutine class >> maker: aBlock [
 
 { #category : #'instance creation' }
 Coroutine >> initialize [
-
+	super initialize.
 	firstTime := true.
 	savedContinuation := nil.
 	resumer := [ :nextCoroutine :value | 
